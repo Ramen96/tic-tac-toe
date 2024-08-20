@@ -90,4 +90,5 @@ nav {
     border-radius: 1rem;
     margin: 0.5rem;
     z-index: 1000;
+    background: transparent;
 }
