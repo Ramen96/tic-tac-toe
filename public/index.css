@@ -39,7 +39,7 @@ nav {
 .containerB {
     width: 90%;
     height: 80%;
-    border: solid #e0e1e1 1px;
+    /* border: solid #e0e1e1 1px; */
     border-radius: 1rem;
     display: flex;
     align-items: center;
@@ -72,8 +72,8 @@ nav {
 }
 
 .gBox {
-    width: 50rem;
-    height: 50rem;
+    width: 90%;
+    height: 90%;
     border-radius: 1rem;
     margin: 1rem;
     display: flex;
@@ -89,4 +89,5 @@ nav {
     border: solid #e0e1e1 1px;
     border-radius: 1rem;
     margin: 0.5rem;
+    z-index: 1000;
 }
