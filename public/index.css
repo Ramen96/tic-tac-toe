@@ -15,3 +15,78 @@ h1 {
     font-family: "Courier New", Courier, monospace;
     font-weight: 600;
 }
+
+nav {
+    width: 100%;
+    height: 4rem;
+    background: #48c9b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+}
+
+.containerA {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerB {
+    width: 90%;
+    height: 80%;
+    border: solid #e0e1e1 1px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2rem;
+}
+
+.playerBox {
+    width: 20%;
+    height: 100%;
+    border: solid #e0e1e1 1px;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.game {
+    width: 60%;
+    height: 100%;
+    border: solid #e0e1e1 1px;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: inline-grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.pName {
+    margin: 2rem;
+    border-bottom: solid #e0e1e1 1px;
+}
+
+.gBox {
+    width: 50rem;
+    height: 50rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card {
+    width: 30%;
+    height: 30%;
+    border: solid #e0e1e1 1px;
+    border-radius: 1rem;
+    margin: 0.5rem;
+}
