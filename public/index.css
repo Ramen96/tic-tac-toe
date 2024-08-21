@@ -25,6 +25,7 @@ nav {
     justify-content: center;
     position: absolute;
     top: 0px;
+    text-align: center !important;
 }
 
 .containerA {
@@ -91,4 +92,22 @@ nav {
     margin: 0.5rem;
     z-index: 1000;
     background: transparent;
+}
+
+.reset {
+    width: 6rem;
+    height: 3rem;
+    background: #e74c3c;
+    border: solid black 2px;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: 10px;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.reset:hover {
+    background: #c0392b;
 }
