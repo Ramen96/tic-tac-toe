@@ -10,10 +10,16 @@ function changeXorO(boolvalue, color, id) {
 // Grabs button element id via param passed in onClick
 function handleClick(id) {
   const stringifiedNum = id.toString();
-  if (playerTurn) {
-    changeXorO(false, "blue", stringifiedNum);
+  const currnetColor = document.getElementById(id).style.background;
+  // Check if card has already been clicked
+  if (currnetColor !== "red" && currnetColor !== "blue") {
+    if (playerTurn) {
+      changeXorO(false, "blue", stringifiedNum);
+    } else {
+      changeXorO(true, "red", stringifiedNum);
+    }
   } else {
-    changeXorO(true, "red", stringifiedNum);
+    console.log("This card is already in use");
   }
 }
 
