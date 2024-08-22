@@ -33,7 +33,7 @@ function checkWinCon(arr) {
     if (x === y) {
       console.log("Win condition met", x);
     } else {
-      console.log("no win condition met");
+      console.log("no win condition met", x);
     }
   }
 }
