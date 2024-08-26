@@ -26,23 +26,33 @@ const winConditions = [
 // need to somehow filter html elements to create arrays of elements
 // that have been clicked on, sort those arrays and feed them to this
 // function.
+
 function checkWinCon(arr) {
+  let commonElements = [];
   let x = JSON.stringify(arr);
+  let ceJsonString = JSON.stringify(commonElements);
+
+  // Compair
   for (let i = 0; i < winConditions.length; i++) {
-    let y = JSON.stringify(winConditions[i]);
-    if (x === y) {
-      // TODO:
-      // Check the lenght of x if it is more than 3
-      // loop throuh x note which elements match y
-      // if 3 elements match y a win condition has been met
-      //
-      // This solves the problem of the array being too long in some
-      // cases and resulting in a false negitive due to the arrays not
-      // matching exactly the same
-      console.log("Win condition met", x);
-    } else {
-      console.log("no win condition met", x);
+    if (winConditions[i].includes(arr[i])) {
+      // pushing then entire array
+      // need to figure out how to only push the element
+      commonElements.push(winConditions[i]);
+      commonElements.sort();
+      removeRepeats(commonElements);
+      console.log("common Elements", commonElements[0]);
     }
+  }
+
+  function removeRepeats(arr) {
+    commonElements = arr.filter((item, index) => arr.indexOf(item) === index);
+  }
+
+  // let y = JSON.stringify(placeholder);
+  if (x === ceJsonString) {
+    console.log("Win condition met", x);
+  } else {
+    console.log("no win condition met", x);
   }
 }
 
