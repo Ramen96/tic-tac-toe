@@ -38,7 +38,9 @@ function checkWinCon(arr) {
         commonElements.push(nestedElement);
         commonElements.sort();
         // removeRepeats(commonElements);
-        console.log("common E", removeRepeats(commonElements));
+        // console.log("common E", removeRepeats(commonElements));
+        commonElements = removeRepeats(commonElements);
+        console.log("common Elements", commonElements);
       }
     });
   });
