@@ -32,28 +32,20 @@ function checkWinCon(arr) {
   let x = JSON.stringify(arr);
   let ceJsonString = JSON.stringify(commonElements);
 
-  // Compair
-  for (let i = 0; i < winConditions.length; i++) {
-    if (winConditions[i].includes(arr[i])) {
-      // pushing then entire array
-      // need to figure out how to only push the element
-      commonElements.push(winConditions[i]);
-      commonElements.sort();
-      removeRepeats(commonElements);
-      console.log("common Elements", commonElements[0]);
-    }
-  }
+  winConditions.forEach((element) => {
+    element.forEach((nestedElement) => {
+      if (arr.includes(nestedElement)) {
+        commonElements.push(nestedElement);
+        commonElements.sort();
+        // removeRepeats(commonElements);
+        console.log("common E", removeRepeats(commonElements));
+      }
+    });
+  });
+}
 
-  function removeRepeats(arr) {
-    commonElements = arr.filter((item, index) => arr.indexOf(item) === index);
-  }
-
-  // let y = JSON.stringify(placeholder);
-  if (x === ceJsonString) {
-    console.log("Win condition met", x);
-  } else {
-    console.log("no win condition met", x);
-  }
+function removeRepeats(arr) {
+  return [...new Set(arr)];
 }
 
 // Change box condition based on player status
@@ -68,19 +60,29 @@ function handleClick(id) {
 
   // Check if card has already been clicked
   if (currnetColor !== "red" && currnetColor !== "blue") {
+    function updateArr(arr, id) {
+      arr.push(id);
+      arr.sort();
+      console.log("updateArr Func", arr);
+      removeRepeats(arr);
+      checkWinCon(arr);
+    }
+
     if (playerTurn) {
       changeXorO(false, "blue", id);
-      p1Arr.push(id);
+      updateArr(p1Arr, id);
+      // p1Arr.push(id);
 
       // Sorting arrays to match win conditons
-      p1Arr.sort();
+      // p1Arr.sort();
       // alert(p1Arr);
-      checkWinCon(p1Arr);
+      // checkWinCon(p1Arr);
     } else {
       changeXorO(true, "red", id);
-      p2Arr.push(id);
-      p2Arr.sort();
-      checkWinCon(p2Arr);
+      updateArr(p2Arr, id);
+      // p2Arr.push(id);
+      // p2Arr.sort();
+      // checkWinCon(p2Arr);
     }
   } else {
     console.log("This card is already in use");
