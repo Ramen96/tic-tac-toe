@@ -19,7 +19,34 @@ const winConditions = [
 // that have been clicked on, sort those arrays and feed them to this
 // function.
 
-function checkWinCon(arr) {}
+function checkWinCon() {
+  let checkX = [];
+  let checkO = [];
+
+  function compairArr(arr) {
+    for (let i = 0; i < winConditions.length; i++) {
+      let currnentWinCon = JSON.stringify(winConditions[i]);
+      const playerArr = JSON.stringify(arr);
+      if (currnentWinCon === playerArr) {
+        console.log("win condition met");
+      }
+    }
+  }
+
+  for (let i = 0; i < boardState.length; i++) {
+    if (boardState[i] !== null) {
+      if (boardState[i] === "X") {
+        checkX.push(i);
+        // checkX.sort();
+        compairArr(checkX);
+      } else {
+        checkO.push(i);
+        // checkO.sort();
+        compairArr(checkO);
+      }
+    }
+  }
+}
 
 // Change box condition based on player status
 function changeXorO(boolvalue, color, id) {
@@ -29,17 +56,17 @@ function changeXorO(boolvalue, color, id) {
 
 // Grabs button element id via param passed in onClick
 function handleClick(id) {
-  const currnetColor = document.getElementById(id).style.background;
-
   if (boardState[id] === null) {
     if (playerTurn) {
       boardState[id] = "X";
       console.log(boardState);
       changeXorO(false, "blue", id);
+      checkWinCon();
     } else {
       boardState[id] = "O";
       console.log(boardState);
       changeXorO(true, "red", id);
+      checkWinCon();
     }
   } else {
     console.log("this card is already in use");
@@ -48,6 +75,7 @@ function handleClick(id) {
 
 // Resets boxes to original state
 function resetBoxes() {
+  boardState = [null, null, null, null, null, null, null, null, null];
   const id = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
   for (let i = 0; i < id.length; i++) {
     document.getElementById(id[i]).style.background = "transparent";
