@@ -14,11 +14,6 @@ const winConditions = [
   [2, 4, 6],
 ];
 
-// compairs arrays to see if win condition is met
-// need to somehow filter html elements to create arrays of elements
-// that have been clicked on, sort those arrays and feed them to this
-// function.
-
 function checkWinCon() {
   let checkX = [];
   let checkO = [];
@@ -33,16 +28,38 @@ function checkWinCon() {
     }
   }
 
+  function filterArr(arr) {
+    if (arr.length > 3) {
+      winConditions.forEach((index) => {
+        // index represents each array inside winConditons
+        let commonElements = [];
+        for (let i = 0; i < arr.length; i++) {
+          if (index.includes(arr[i])) {
+            // looping over the array passed in the param and checking if its elements are included in the currently indexed array from winConditions
+            // the common elements are pushed to a new array and can be compaired to each index of winConditions
+            commonElements.push(arr[i]);
+            if (commonElements.length === 3) {
+              compairArr(commonElements);
+            }
+          }
+        }
+      });
+    }
+    if (arr.length <= 3) {
+      compairArr(arr);
+    }
+  }
+
   for (let i = 0; i < boardState.length; i++) {
+    // Step 1: loop over bordState
     if (boardState[i] !== null) {
+      // Step 2: Where index is not null push to player array
       if (boardState[i] === "X") {
         checkX.push(i);
-        // checkX.sort();
-        compairArr(checkX);
+        filterArr(checkX); // Step 3: Filter arrays so they can be screened for win conditons
       } else {
         checkO.push(i);
-        // checkO.sort();
-        compairArr(checkO);
+        filterArr(checkO);
       }
     }
   }
@@ -59,12 +76,10 @@ function handleClick(id) {
   if (boardState[id] === null) {
     if (playerTurn) {
       boardState[id] = "X";
-      console.log(boardState);
       changeXorO(false, "blue", id);
       checkWinCon();
     } else {
       boardState[id] = "O";
-      console.log(boardState);
       changeXorO(true, "red", id);
       checkWinCon();
     }
