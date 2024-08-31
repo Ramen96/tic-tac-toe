@@ -5,7 +5,7 @@
         <title>Tic Tac Toe</title>
         <link href="index.css" rel="stylesheet" />
     </head>
-    <body>
+    <body id="notBody">
         <nav>
             <h1>Tic Tac Toe Game</h1>
             <button class="reset" onclick="resetGame()">Reset</button>
@@ -14,7 +14,7 @@
             <div class="containerB">
                 <div class="playerBox">
                     <h1 class="pName">Player 1</h1>
-                    <h2 id="player1Score">Score: 0</h2>
+                    <h2 class="playerScore" id="player1Score">Score: 0</h2>
                 </div>
                 <div class="game">
                     <div class="gBox">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="playerBox">
                     <h1 class="pName">Player 2</h1>
-                    <h2 id="player2Score">Score: 0</h2>
+                    <h2 class="playerScore" id="player2Score">Score: 0</h2>
                 </div>
             </div>
         </div>

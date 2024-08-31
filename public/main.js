@@ -155,3 +155,30 @@ function resetGame() {
   document.getElementById("player1Score").textContent = "Score: 0";
   document.getElementById("player2Score").textContent = "Score: 0";
 }
+
+function randomNumGen() {
+  let colors = [];
+  const ran = () => {
+    return Math.random() * 100;
+  };
+
+  for (let i = 0; i < 3; i++) {
+    colors.push(ran());
+  }
+  return colors;
+}
+
+function randColor(arr) {
+  document.getElementById("notBody").style.background =
+    `rgb(${arr[0]},${arr[1]},${arr[2]})`;
+}
+
+function getRandCLolor() {
+  setTimeout(() => {
+    randColor(randomNumGen());
+    getRandCLolor();
+  }, 6000);
+}
+
+getRandCLolor();
+randColor(randomNumGen());

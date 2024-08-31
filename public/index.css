@@ -8,6 +8,10 @@ body {
 
 body {
     background: #383838;
+    webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
 }
 
 h1,
@@ -111,4 +115,8 @@ nav {
 
 .reset:hover {
     background: #c0392b;
+}
+
+.playerScore {
+    font-size: 30px;
 }
