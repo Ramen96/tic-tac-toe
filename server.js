@@ -1,6 +1,5 @@
 const express = require("express", 4.19);
 const browserSync = require("browser-sync");
-// import browserSync from "browser-sync";
 const app = express();
 const port = 3000;
 
