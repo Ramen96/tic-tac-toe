@@ -10,6 +10,7 @@ browserSync.init({
   proxy: "http://localhost:3000",
   port: 3001,
   files: ["public/**/*.*", "server.js"],
+  open: false,
 });
 
 app.get("/", (req, res) => {
