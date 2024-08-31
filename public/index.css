@@ -63,9 +63,6 @@ nav {
     border: solid #e0e1e1 1px;
     border-radius: 1rem;
     margin: 1rem;
-    display: inline-grid;
-    justify-content: center;
-    align-items: center;
 }
 
 .pName {
@@ -93,6 +90,9 @@ nav {
     margin: 0.5rem;
     z-index: 1000;
     background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .reset {

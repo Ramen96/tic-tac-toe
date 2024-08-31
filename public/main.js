@@ -15,29 +15,9 @@ const winConditions = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-
 function checkWinCon() {
   let checkX = [];
   let checkO = [];
-
-  function updateText(id) {
-    const element = document.getElementById(id);
-    if (playerTurn) {
-      if (element !== null) {
-        player1Count++;
-        element.textContent = player1Count;
-      } else {
-        console.error(`Element with ${id} not found.`);
-      }
-    } else {
-      if (element !== null) {
-        player2Count++;
-        element.textContent = player2Count;
-      } else {
-        console.error(`Element with ${id} not found.`);
-      }
-    }
-  }
 
   function win() {
     if (playerTurn) {
@@ -101,9 +81,42 @@ function checkWinCon() {
   }
 }
 
+function updateText(id) {
+  const element = document.getElementById(id);
+  if (playerTurn) {
+    if (element !== null) {
+      player1Count++;
+      element.textContent = `Score: ${player1Count}`;
+    } else {
+      console.error(`Element with ${id} not found.`);
+    }
+  } else {
+    if (element !== null) {
+      player2Count++;
+      element.textContent = `Score: ${player2Count}`;
+    } else {
+      console.error(`Element with ${id} not found.`);
+    }
+  }
+  function reset() {
+    element.textContent = "Score: 0";
+  }
+}
+
 // Change box condition based on player status
-function changeXorO(boolvalue, color, id) {
-  document.getElementById(id).style.background = color;
+function changeXorO(boolvalue, id) {
+  const element = document.getElementById(id);
+  function addSvg(img, position) {
+    element.style.backgroundImage = img;
+    element.style.backgroundPosition = position;
+  }
+  if (playerTurn) {
+    addSvg('url("X.svg")', "center");
+  } else {
+    addSvg('url("O.svg")', "center");
+    element.style.backgroundRepeat = "no-repeat";
+    element.style.backgroundSize = "70%";
+  }
   playerTurn = boolvalue;
 }
 
@@ -113,11 +126,11 @@ function handleClick(id) {
     if (boardState[id] === null) {
       if (playerTurn) {
         boardState[id] = "X";
-        changeXorO(false, "blue", id);
+        changeXorO(false, id);
         checkWinCon();
       } else {
         boardState[id] = "O";
-        changeXorO(true, "red", id);
+        changeXorO(true, id);
         checkWinCon();
       }
     } else {
@@ -136,4 +149,12 @@ function resetBoxes() {
   for (let i = 0; i < id.length; i++) {
     document.getElementById(id[i]).style.background = "transparent";
   }
+}
+
+function resetGame() {
+  resetBoxes();
+  player1Count = 0;
+  player2Count = 0;
+  document.getElementById("player1Score").textContent = "Score: 0";
+  document.getElementById("player2Score").textContent = "Score: 0";
 }
