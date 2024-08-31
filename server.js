@@ -9,11 +9,15 @@ app.use(express.static("files"));
 browserSync.init({
   proxy: "http://localhost:3000",
   port: 3001,
-  files: ["public/**/*.*"],
+  files: ["public/**/*.*", "server.js"],
 });
 
 app.get("/", (req, res) => {
   res.send("public");
+});
+
+app.use((req, res, next) => {
+  res.status(404).send("public");
 });
 
 app.listen(port, () => {
