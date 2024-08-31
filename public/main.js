@@ -98,9 +98,6 @@ function updateText(id) {
       console.error(`Element with ${id} not found.`);
     }
   }
-  function reset() {
-    element.textContent = "Score: 0";
-  }
 }
 
 // Change box condition based on player status
