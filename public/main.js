@@ -177,7 +177,7 @@ function getRandCLolor() {
   setTimeout(() => {
     randColor(randomNumGen());
     getRandCLolor();
-  }, 6000);
+  }, 3750);
 }
 
 getRandCLolor();
