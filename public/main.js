@@ -1,5 +1,7 @@
-// Determines player trun true = p1 false = p2
-let playerTurn = false;
+// ##################################################################### //
+// ####################### SECTION: Game Logic ######################### //
+// ##################################################################### //
+let playerTurn = false; // true = p2 false = p1
 let boardState = [null, null, null, null, null, null, null, null, null];
 let gameStateWon = false;
 let player1Count = 0;
@@ -15,6 +17,7 @@ const winConditions = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+
 function checkWinCon() {
   let checkX = [];
   let checkO = [];
@@ -79,6 +82,15 @@ function checkWinCon() {
       }
     }
   }
+  autoResetBoxes();
+}
+
+function autoResetBoxes() {
+  let resetTrigger = 0;
+  boardState.forEach((index) => {
+    index !== null ? resetTrigger++ : "none";
+    resetTrigger === 9 ? setTimeout(() => resetBoxes(), 1000) : "none";
+  });
 }
 
 function updateText(id) {
@@ -150,27 +162,40 @@ function resetBoxes() {
 
 function resetGame() {
   resetBoxes();
+  playerTurn = false;
   player1Count = 0;
   player2Count = 0;
   document.getElementById("player1Score").textContent = "Score: 0";
   document.getElementById("player2Score").textContent = "Score: 0";
 }
 
+// ##################################################################################### //
+// #################### SECTION: Background animation ################################## //
+// ##################################################################################### //
 function randomNumGen() {
   let colors = [];
   const ran = () => {
     return Math.random() * 100;
   };
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 18; i++) {
     colors.push(ran());
   }
   return colors;
 }
 
+// function randColor(arr) {
+//   document.getElementById("notBody").style.background =
+//     `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
+// }
+
 function randColor(arr) {
-  document.getElementById("notBody").style.background =
-    `rgb(${arr[0]},${arr[1]},${arr[2]})`;
+  const gradient1 = `linear-gradient(217deg, rgba(${arr[0]},${arr[1]},${arr[2]},${Math.random()}), rgba(${arr[9]},${arr[10]},${arr[11]},${Math.random()}) 70.71%)`;
+  const gradient2 = `linear-gradient(127deg, rgba(${arr[3]},${arr[4]},${arr[5]},${Math.random()}), rgba(${arr[12]},${arr[13]},${arr[14]},${Math.random()}) 70.71%)`;
+  const gradient3 = `linear-gradient(336deg, rgba(${arr[6]},${arr[7]},${arr[8]},${Math.random()}), rgba(${arr[15]},${arr[16]},${arr[17]},${Math.random()}) 70.71%)`;
+
+  document.getElementById("notBody").style.backgroundImage =
+    `${gradient1}, ${gradient2}, ${gradient3}`;
 }
 
 function getRandCLolor() {
